@@ -1,3 +1,7 @@
+
+# Book_Review_Hub
+This is a project where users can submit and browse reviews for books.
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +26,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
