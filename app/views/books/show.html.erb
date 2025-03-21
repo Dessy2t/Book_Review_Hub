@@ -1,2 +1,22 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+
+<h1><%= @book.title %></h1>
+<p><strong>Author:</strong> <%= @book.author %></p>
+<p><strong>ISBN:</strong> <%= @book.isbn %></p>
+
+<% if @book.cover_image.attached? %>
+  <%= image_tag @book.cover_image, width: "150px" %>
+<% end %>
+
+<h2>Reviews</h2>
+<% @book.reviews.each do |review| %>
+  <p>⭐ <%= review.rating %>/5 - <%= review.content %></p>
+<% end %>
+
+<h3>Add a Review</h3>
+<%= form_with(model: [@book, @review], local: true) do |f| %>
+  <p><%= f.label :rating %> <%= f.number_field :rating, in: 1..5 %></p>
+  <p><%= f.label :content %> <%= f.text_area :content %></p>
+  <p><%= f.submit "Submit Review" %></p>
+<% end %>
+<%= link_to 'Edit', edit_book_path(@book) %>
+<%= link_to 'Back to Index', books_path %>
