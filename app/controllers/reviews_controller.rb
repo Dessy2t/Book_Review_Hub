@@ -8,10 +8,11 @@ class ReviewsController < ApplicationController
     redirect_to @book, alert: "Error adding review."
   end
 end
+
 def destroy
   @review = Review.find(params[:id])
   @review.destroy
-  redirect_to @review.book
+  redirect_to @review.book, notice: "Review added!"
 end
 private
 def review_params

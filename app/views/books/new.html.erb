@@ -1,2 +1,23 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<h1>New Book</h1>
+<%= form_with model: @book do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+  <div>
+    <%= form.label :isbn %>
+    <%= form.text_field :isbn %>
+  </div>
+  <div>
+    <%= form.label :cover_image %>
+    <%= form.file_field :cover_image %>
+  </div>
+  <div>
+    <%= form.submit 'Create Book' %>
+  </div>
+<% end %>
+<%= link_to 'Back', books_path %>

@@ -13,11 +13,18 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    if @book.save
-      redirect_to @book, notice: "Book added successfully."
+    @book = OpenLibraryService.fetch_book_details(params[:isbn])
+
+    if book_data
+      @book = Book.new(book_data)
+      if @book.save
+        redirect_to @book, notice: "Book added successfully."
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      flash[:alert] = "No Book found."
+      render :new
     end
   end
 
@@ -37,7 +44,7 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to books_path
+    redirect_to books_path, notice: "successfully deleted."
   end
 
   private
