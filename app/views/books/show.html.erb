@@ -1,22 +1,19 @@
 
+
 <h1><%= @book.title %></h1>
 <p><strong>Author:</strong> <%= @book.author %></p>
-<p><strong>ISBN:</strong> <%= @book.isbn %></p>
-
-<% if @book.cover_image.attached? %>
-  <%= image_tag @book.cover_image, width: "150px" %>
-<% end %>
-
+<%= image_tag @book.cover_image if @book.cover_image.attached? %>
 <h2>Reviews</h2>
-<% @book.reviews.each do |review| %>
-  <p>⭐ <%= review.rating %>/5 - <%= review.content %></p>
-<% end %>
-
-<h3>Add a Review</h3>
-<%= form_with(model: [@book, @review], local: true) do |f| %>
-  <p><%= f.label :rating %> <%= f.number_field :rating, in: 1..5 %></p>
-  <p><%= f.label :content %> <%= f.text_area :content %></p>
-  <p><%= f.submit "Submit Review" %></p>
+<ul>
+  <% @book.reviews.each do |review| %>
+    <li><%= review.content %> - <%= review.rating %> stars
+      <%= link_to 'Delete', [review.book, review], method: :delete %></li>
+  <% end %>
+</ul>
+<%= form_with(model: [@book, Review.new]) do |form| %>
+  <%= form.text_area :content %>
+  <%= form.number_field :rating, in: 1..5 %>
+  <%= form.submit 'Submit Review' %>
 <% end %>
 <%= link_to 'Edit', edit_book_path(@book) %>
 <%= link_to 'Back to Index', books_path %>

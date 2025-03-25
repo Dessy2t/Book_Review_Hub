@@ -1,2 +1,9 @@
-<h1>Books#destroy</h1>
-<p>Find me in app/views/books/destroy.html.erb</p>
+<div class="container">
+  <h2>Are you sure you want to delete "<%= @book.title %>"?</h2>
+  <p>This action cannot be undone.</p>
+
+  <%= form_for @book, method: :delete do %>
+    <%= submit_tag "Yes, Delete", class: "btn btn-danger" %>
+    <%= link_to "Cancel", books_path, class: "btn btn-secondary" %>
+  <% end %>
+</div>

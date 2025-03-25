@@ -1,3 +1,7 @@
+<%@books.each do |book|%>
+  <h2><%=link_to book.title, book_path(book)%><h2>
+<%end%>
+
 <h1>Books</h1>
 <%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
 
@@ -5,6 +9,9 @@
   <% @books.each do |book| %>
     <li>
       <%= link_to book.title, book_path(book) %> - Avg Rating: <%= book.reviews.average(:rating) || "N/A" %>
+      <%= link_to "Edit", edit_book_path(book), class: "btn btn-warning" %>
+      <%= link_to "Delete", book_path(book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+
     </li>
   <% end %>
 </ul>

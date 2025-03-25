@@ -1,0 +1,97 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding-top: 20px;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #007bff !important;
+  }
+  
+  .navbar-brand, .navbar-nav .nav-link {
+    color: white !important;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  /* Book List */
+  .book-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .book-list li {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Book Show Page */
+  .book-cover {
+    max-width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-details {
+    padding: 15px;
+  }
+  
+  .review-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .review-list li {
+    background: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-left: 4px solid #007bff;
+    border-radius: 5px;
+  }
+  
+  /* Forms */
+  .form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 15px;
+    background: #343a40;
+    color: white;
+    margin-top: 20px;
+  }
+  
