@@ -1,29 +1,12 @@
 
-# Book_Review_Hub
-This is a project where users can submit and browse reviews for books.
+# Book Review Hub
+## Setup Instructions
 
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+1. Clone the repository
+2. ruby version 3.3.0
+3. Rails version 8.0.1
+4. Navigate to the project directory
+5. Run `bundle install`
+6. Run `rails db:migrate`
+7. Run `rails db:seed` for all database
+8. Start the server using `bundle exec rails server --binding=0.0.0.0`
