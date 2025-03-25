@@ -10,3 +10,4 @@
 6. Run `rails db:migrate`
 7. Run `rails db:seed` for all database
 8. Start the server using `bundle exec rails server --binding=0.0.0.0`
+9. 
