@@ -2,7 +2,7 @@
 
 <h1><%= @book.title %></h1>
 <p><strong>Author:</strong> <%= @book.author %></p>
-<%= image_tag @book.cover_image if @book.cover_image.attached? %>
+<%= image_tag @book.cover_image, width: "100" if @book.cover_image.attached? %>
 <h2>Reviews</h2>
 <ul>
   <% @book.reviews.each do |review| %>
@@ -11,9 +11,10 @@
   <% end %>
 </ul>
 <%= form_with(model: [@book, Review.new]) do |form| %>
-  <%= form.text_area :content %>
-  <%= form.number_field :rating, in: 1..5 %>
+ <%= form.text_area :content, placeholder: "Write your review here" %><br>
+  <%= form.label :rating%>
+  <%= form.number_field :rating, in: 1..5, max: 5 %>
   <%= form.submit 'Submit Review' %>
 <% end %>
 <%= link_to 'Edit', edit_book_path(@book) %>
-<%= link_to 'Back to Index', books_path %>
+<%= link_to 'Back to Books', books_path %>
