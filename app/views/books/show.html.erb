@@ -1,9 +1,11 @@
 
-
+<header class="text-center">
 <h1><%= @book.title %></h1>
+</header>
 <p><strong>Author:</strong> <%= @book.author %></p>
 <%= image_tag @book.cover_image, width: "100" if @book.cover_image.attached? %>
 <h2>Reviews</h2>
+
 <ul>
   <% @book.reviews.each do |review| %>
     <li><%= review.content %> - <%= review.rating %> stars

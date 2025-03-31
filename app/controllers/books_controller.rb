@@ -3,7 +3,13 @@ class BooksController < ApplicationController
  before_action :set_book, only: %i[edit update destroy]
 
   def index
-    @books = Book.all#{}("created_at DESC")
+    if params[:commit]== "Search"
+      searched_book = params[:query]
+      base = Book.where("title ILIKE ?", "%#{searched_book}%")
+    else
+      base = Book.all
+    end
+    @books = base
   end
 
   def show
