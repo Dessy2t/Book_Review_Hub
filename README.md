@@ -33,4 +33,4 @@ Adding a Review
 2. Submit a review with a rating (1-5) and text content.
 
 Searching for Books
-1. Use the search bar to find books by title or author.
+1. Use the search bar to find books by title.
