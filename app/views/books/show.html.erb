@@ -13,10 +13,10 @@
   <% end %>
 </ul>
 <%= form_with(model: [@book, Review.new]) do |form| %>
- <%= form.text_area :content, placeholder: "Write your review here" %><br>
-  <%= form.label :rating%>
-  <%= form.number_field :rating, in: 1..5, max: 5 %>
-  <%= form.submit 'Submit Review' %>
+ <%= form.rich_textarea :content, placeholder: "Write your review here" %><br>
+  <%= form.label :rating, "Rating(1 = low, 5 = high)" %>
+  <%= form.number_field :rating, in: 1..5, max: 5 , class: "form-control my-2", placeholder: "Add rating from 1 to 5" %>
+  <%= form.submit 'Submit Review', class:"btn btn-primary" %>
 <% end %>
 <%= link_to 'Edit', edit_book_path(@book) %>
 <%= link_to 'Back to Books', books_path %>

@@ -2,22 +2,22 @@
 <%= form_with model: @book do |form| %>
   <div>
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class:"form-control" %>
   </div>
   <div>
     <%= form.label :author %>
-    <%= form.text_field :author %>
+    <%= form.text_field :author, class:"form-control" %>
   </div>
   <div>
     <%= form.label :isbn %>
-    <%= form.text_field :isbn %>
+    <%= form.text_field :isbn, class:"form-control"  %>
   </div>
   <div>
     <%= form.label :cover_image %>
-    <%= form.file_field :cover_image %>
+    <%= form.file_field :cover_image, class:"form-control"  %>
   </div>
   <div>
-    <%= form.submit 'Create Book' %>
+    <%= form.submit 'Create Book', class:"btn btn-primary" %>
   </div>
 <% end %>
 <%= link_to 'Back', books_path %>
