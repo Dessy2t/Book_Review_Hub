@@ -6,12 +6,11 @@ class BooksController < ApplicationController
     
     if params[:commit]== "Search"
       searched_book = params[:query]
-      base = Book.where("title ILIKE ?", "%#{searched_book}%")
+      base = Book.where("title ILIKE ? ", "%#{searched_book}%")
     else
       base = Book.all
     end
     @pagy, @books = pagy(base)
-    #  @pagy, @books = pagy(Book.all, page: params[:page], items: 10)
   end
 
   def show
