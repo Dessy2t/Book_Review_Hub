@@ -3,13 +3,15 @@ class BooksController < ApplicationController
  before_action :set_book, only: %i[edit update destroy]
 
   def index
+    
     if params[:commit]== "Search"
       searched_book = params[:query]
       base = Book.where("title ILIKE ?", "%#{searched_book}%")
     else
       base = Book.all
     end
-    @books = base
+    @pagy, @books = pagy(base)
+    #  @pagy, @books = pagy(Book.all, page: params[:page], items: 10)
   end
 
   def show
@@ -22,7 +24,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = OpenLibraryService.fetch_book_details(params[:isbn])
+    # @book = OpenLibraryService.fetch_book_details(params[:isbn])
 
     if books_path
       @book = Book.new(book_params)
