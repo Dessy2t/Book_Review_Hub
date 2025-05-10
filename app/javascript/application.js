@@ -4,3 +4,7 @@ import "controllers"
 
 import "trix"
 import "@rails/actiontext"
+import "pagy"
+
+window.addEventListener("turbo:load", Pagy.init);
+
