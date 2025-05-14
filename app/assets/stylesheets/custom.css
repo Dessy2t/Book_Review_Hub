@@ -73,6 +73,7 @@ body {
   .form-control {
     border-radius: 5px;
     border: 1px solid #ddd;
+  
   }
   
   .form-group {
@@ -93,5 +94,9 @@ body {
     background: #343a40;
     color: white;
     margin-top: 20px;
+  }
+  .py-2{
+    margin:0px 2px;
+    padding: 0.8rem;
   }
   

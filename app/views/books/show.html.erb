@@ -8,15 +8,30 @@
 
 <ul>
   <% @book.reviews.each do |review| %>
-    <li><%= review.content %> - <%= review.rating %> stars
+  <li>
+  <%= review.content %> -
+  <%= '★' * review.rating + '☆' * (5 - review.rating) %>
       <%= link_to 'Delete', [review.book, review], method: :delete %></li>
   <% end %>
 </ul>
+<%if user_signed_in? %>
 <%= form_with(model: [@book, Review.new]) do |form| %>
  <%= form.rich_textarea :content, placeholder: "Write your review here" %><br>
-  <%= form.label :rating, "Rating(1 = low, 5 = high)" %>
-  <%= form.number_field :rating, in: 1..5, max: 5 , class: "form-control my-2", placeholder: "Add rating from 1 to 5" %>
+
+<div class="my-2">
+  <%= form.label :rating, "Rating:" %><br>
+  <% 5.downto(1) do |i| %>
+    <%= form.radio_button :rating, i, id: "star#{i}" %>
+    <label for="star<%= i %>">★</label>
+  <% end %>
+</div>
+
   <%= form.submit 'Submit Review', class:"btn btn-primary" %>
 <% end %>
+<% else %>
+  <p class="alert alert-warning">
+    <%= link_to "Log in", new_user_session_path %> to write a review.
+  </p>
 <%= link_to 'Edit', edit_book_path(@book) %>
 <%= link_to 'Back to Books', books_path %>
+  <%end%>

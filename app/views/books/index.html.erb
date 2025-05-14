@@ -5,8 +5,8 @@
 <div class= "d-flex align-items-center justify-content-between ">
 <%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
 <%= form_with url:"/books", class: "d-flex align-items-center", method: :get do |form|%>
-<%= form.label :query, "Search for", class: "fs-5 text-nowrap"%>
-<%= form.search_field :query, class: "py-2"%>
+<%= form.label :query, "Search for", placeholder: "search book by title or ISBN", class: "fs-5 text-nowrap"%>
+<%= form.search_field :query, placeholder: "Search by title or ISBN", class: "py-2"%>
 <%= form.submit "Search", class: "btn btn-primary"%>
 <%end%>
 <%= link_to "Back", books_path if params[:query].present?%>
@@ -31,3 +31,14 @@
   <% end %>
 </ul>
     <%= pagy_combo_nav_js(@pagy).html_safe%>
+
+
+
+<% if user_signed_in? %>
+  Signed in as <%= current_user.email %> |
+  <%= link_to 'Edit profile', edit_user_registration_path %> |
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Sign up', new_user_registration_path %> |
+  <%= link_to 'Login', new_user_session_path %>
+<% end %>

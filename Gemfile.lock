@@ -395,7 +395,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
-  devise
+  devise (~> 4.9, >= 4.9.4)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

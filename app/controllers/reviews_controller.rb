@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
+ 
   def create
     @book = Book.find(params[:book_id])
     @review = @book.reviews.build(review_params)
@@ -19,4 +21,5 @@ def review_params
   params.require(:review).permit(:content, :rating)
 end
 end
+
  
