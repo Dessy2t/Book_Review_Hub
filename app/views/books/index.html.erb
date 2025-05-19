@@ -3,24 +3,29 @@
 <h1>Books</h1>
 </header>
 <div class= "d-flex align-items-center justify-content-between ">
-<%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
-<%= form_with url:"/books", class: "d-flex align-items-center", method: :get do |form|%>
-<%= form.label :query, "Search for", placeholder: "search book by title or ISBN", class: "fs-5 text-nowrap"%>
-<%= form.search_field :query, placeholder: "Search by title or ISBN", class: "py-2"%>
-<%= form.submit "Search", class: "btn btn-primary"%>
-<%end%>
-<%= link_to "Back", books_path if params[:query].present?%>
+  <%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
+  <%= form_with url:"/books", class: "d-flex align-items-center", method: :get do |form|%>
+  <%= form.label :query, "Search for", placeholder: "search book by title or ISBN", class: "fs-5 text-nowrap"%>
+  <%= form.search_field :query, value:params[:query], placeholder: "Search by title or ISBN", class: "py-2"%>
+  <%= form.submit "Search", class: "btn btn-primary"%>
+  <%end%>
+  <%= link_to "Back", books_path if params[:query].present?%>
 </div>
+<% if @books.empty? %>
+  <p>
+  There are no results for the: "<%=params[:query]%>"
+  </p>
+<%end%>
 <ul class="list-group list-group-flush" >
   <% @books.each do |book| %>
     <li class="list-group-item" >
       <%= link_to book_path(book), class: "d-flex flex-column align-item-center mb-2" do %> 
       <%= book.title %>
       <% if book.cover_image.attached?%>
-       <%=image_tag book.cover_image, width: "100" %>
-       <%else %>
-       <img src="https://fpoimg.com/200x250?text=Hanselman" width="100"/>
-       <%end%>
+        <%=image_tag book.cover_image, width: "100" %>
+      <%else %>
+        <img src="https://fpoimg.com/200x250?text=Hanselman" width="100"/>
+        <%end%>
       <% end %>
       <span >
         <%= link_to "Show", book, class: "btn btn-info" %>
@@ -30,15 +35,4 @@
     </li>
   <% end %>
 </ul>
-    <%= pagy_combo_nav_js(@pagy).html_safe%>
-
-
-
-<% if user_signed_in? %>
-  Signed in as <%= current_user.email %> |
-  <%= link_to 'Edit profile', edit_user_registration_path %> |
-  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign up', new_user_registration_path %> |
-  <%= link_to 'Login', new_user_session_path %>
-<% end %>
+  <%= pagy_combo_nav_js(@pagy).html_safe%>

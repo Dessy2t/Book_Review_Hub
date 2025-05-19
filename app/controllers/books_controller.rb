@@ -7,7 +7,7 @@ class BooksController < ApplicationController
     
     if params[:commit]== "Search"
       searched_book = params[:query]
-      base = Book.where("title ILIKE ? OR isbn ILIKE ?", "%#{searched_book}%", "%#{searched_book}%")
+      base = Book.where("title ILIKE :query OR isbn ILIKE :query", {:query=>"%#{searched_book}%"})
     else
       base = Book.all
     end
