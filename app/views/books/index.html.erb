@@ -3,7 +3,9 @@
 <h1>Books</h1>
 </header>
 <div class= "d-flex align-items-center justify-content-between ">
+<% if user_signed_in?%>
   <%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
+  <% end %>
   <%= form_with url:"/books", class: "d-flex align-items-center", method: :get do |form|%>
   <%= form.label :query, "Search for", placeholder: "search book by title or ISBN", class: "fs-5 text-nowrap"%>
   <%= form.search_field :query, value:params[:query], placeholder: "Search by title or ISBN", class: "py-2"%>
@@ -27,11 +29,12 @@
         <img src="https://fpoimg.com/200x250?text=Hanselman" width="100"/>
         <%end%>
       <% end %>
+      <% if user_signed_in? %>
       <span >
-        <%= link_to "Show", book, class: "btn btn-info" %>
         <%= link_to "Edit", edit_book_path(book), class: "btn btn-warning" %>
         <%= link_to "Delete", book_path(book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
       </span>
+      <% end %>
     </li>
   <% end %>
 </ul>
