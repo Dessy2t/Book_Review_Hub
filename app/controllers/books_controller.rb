@@ -27,9 +27,9 @@ class BooksController < ApplicationController
     # @book = OpenLibraryService.fetch_book_details(params[:isbn])
 
     if books_path
-      # @book = current_user.Books.build(book_params)
+      @book = current_user.Books.build(book_params)
 
-      @book = Book.new(book_params)
+      # @book = Book.new(book_params)
       if @book.save
         redirect_to @book, notice: "Book added successfully."
       else

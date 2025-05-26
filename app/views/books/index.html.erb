@@ -35,11 +35,14 @@
           <%end%>
         <% end %>
 
-        <% if user_signed_in? %>
-          <span >
+        <small>
+          Added by: <%= book.user.email if book.user %>
+        </small>
+        <% if user_signed_in? && current_user == book.user%>
+          <div >
             <%= link_to "Edit", edit_book_path(book), class: "btn btn-warning" %>
             <%= link_to "Delete", book_path(book), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
-          </span>
+          </div>
         <% end %>
       </li>
     <% end %>
