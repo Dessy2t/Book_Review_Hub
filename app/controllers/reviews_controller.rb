@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!
  
   def create
     @book = Book.find(params[:book_id])
@@ -16,8 +16,10 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.destroy
-    redirect_to @review.book, notice: "Review added!"
+    if @review.user == current_user
+      @review.destroy
+      redirect_to @review.book, notice: "Review added!"
+    end
   end
 
   private

@@ -9,9 +9,14 @@
 <ul>
   <% @book.reviews.each do |review| %>
   <li>
-    <%= review.content %> 
-    <%= '★' * review.rating + '☆' * (5 - review.rating) %>
-    <%= link_to 'Delete', [review.book, review], method: :delete %>
+    <p>
+     <%= review.content %> 
+     <small><%=review.user.email%></small>
+    </p>
+      <%= '★' * review.rating + '☆' * (5 - review.rating) %>
+    <% if user_signed_in? && current_user == review.user %>
+      <%= link_to 'Delete', [review.book, review], data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete" } %>
+    <%end%>
   </li>
    <% end %>
 </ul>
