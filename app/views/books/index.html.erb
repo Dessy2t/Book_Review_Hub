@@ -36,7 +36,7 @@
         <% end %>
 
         <small>
-          Added by: <%= book.user.email if book.user %>
+          Added by: <%= book.user.email %>
         </small>
         <% if user_signed_in? && current_user == book.user%>
           <div >
