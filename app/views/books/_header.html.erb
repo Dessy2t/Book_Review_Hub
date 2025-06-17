@@ -10,11 +10,11 @@
                 <%= link_to "Books", books_path, class: "nav-link px-2 text-white"%>    
             </ul>
     
-            <%= form_with url:"/books", class: "d-flex align-items-center ", method: :get do |form|%>
-            <%= form.label :query, "Search for", placeholder: "search book by title or ISBN", class: "fs-5 text-nowrap"%>
-            <%= form.search_field :query, value:params[:query], placeholder: "Search by title or ISBN", class: "py-2 bg-dark"%>
-            <%= form.submit "Search", class: "btn btn-primary me-2 text-bg-dark"%>
+            <%= form_with url:"/books", class: "d-flex align-items-center", method: :get do |form|%>
+               <%= form.search_field :query, value:params[:query], placeholder: "Search by title or ISBN", style: "color: white;", class: "form-control py-2 bg-dark me-4 text-light"%>
+               <%= form.submit "Search", class: "btn btn-primary me-2 text-bg-dark", style: "display: none;"%>
             <%end%>
+           
 
             <div class="text-end">
                 <% if user_signed_in? %>
