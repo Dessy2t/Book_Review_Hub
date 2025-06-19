@@ -11,7 +11,7 @@
             </ul>
     
             <%= form_with url:"/books", class: "d-flex align-items-center", method: :get do |form|%>
-               <%= form.search_field :query, value:params[:query], placeholder: "Search by title or ISBN", style: "color: white;", class: "form-control py-2 bg-dark me-4 text-light"%>
+               <%= form.search_field :query, value:params[:query], placeholder: "Search by title or ISBN", style: "color: white;", class: "placeholder-light form-control bg-dark py-2 me-4 text-light"%>
                <%= form.submit "Search", class: "btn btn-primary me-2 text-bg-dark", style: "display: none;"%>
             <%end%>
            

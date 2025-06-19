@@ -127,3 +127,6 @@ body {
     color: #f5b301;
   }
   
+  input.placeholder-light::placeholder{
+    color: white;
+  }
