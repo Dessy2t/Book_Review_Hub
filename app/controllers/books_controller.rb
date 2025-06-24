@@ -25,7 +25,7 @@ class BooksController < ApplicationController
 
   def create
     # @book = OpenLibraryService.fetch_book_details(params[:isbn])
-
+    logger.info"#{book_params.inspect}.........................."
     if books_path
       @book = current_user.books.build(book_params)
 
