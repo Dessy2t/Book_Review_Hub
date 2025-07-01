@@ -1,13 +1,13 @@
 class BooksController < ApplicationController
- #{}before_action :set_book, only: [:show, :edit, :update, :destroy]
- before_action :authenticate_user!, only: [:new, :show]
- before_action :set_book, only: %i[edit update destroy]
+  before_action :authenticate_user!, only: [:new, :show]
+  before_action :set_book, only: %i[edit update destroy]
 
   def index
     
     if params[:commit]== "Search"
       searched_book = params[:query]
       base = Book.where("title ILIKE :query OR isbn ILIKE :query", {:query=>"%#{searched_book}%"})
+      head :accepted
     else
       base = Book.all
     end
@@ -41,7 +41,9 @@ class BooksController < ApplicationController
   end
 
   def edit
+    # @book = Book.find(params[:id])
   end
+ 
 
   def update
     #{}@book = Book.find(params[:id])
