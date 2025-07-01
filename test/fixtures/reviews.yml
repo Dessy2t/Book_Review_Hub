@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyText
-  rating: 1
+  content: book one review
+  rating: 3
   book: one
+  user: two
 
 two:
-  content: MyText
+  content: book two review
   rating: 1
   book: two
+  user: one

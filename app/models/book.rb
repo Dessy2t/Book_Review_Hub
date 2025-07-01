@@ -5,5 +5,4 @@ class Book < ApplicationRecord
   
   validates :title, :author, presence: true
   validates :isbn, uniqueness: true, allow_nil: true
-  
 end

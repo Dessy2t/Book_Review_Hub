@@ -1,7 +1,13 @@
 require "test_helper"
 
 class ReviewTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "validations for review testing" do
+    review = Review.new
+    review.content = "Content"
+    review.rating = "4"
+    review.user = User.new
+    review.book = Book.new
+
+    assert review.valid?
+  end
 end
