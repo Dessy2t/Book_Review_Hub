@@ -7,7 +7,6 @@
     <% if user_signed_in?%>
       <%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
     <% end %>
-
     
     <%= link_to "Back", books_path if params[:query].present?%>
   </div>
@@ -23,6 +22,9 @@
       <li class="list-group-item" >
         <%= link_to book_path(book), class: "d-flex flex-column align-item-center mb-2" do %> 
           <%= book.title %>
+          <p class="mb-1 text-muted"> 
+            ISBN: <%= book.isbn %>
+          </p>
           
           <% if book.cover_image.attached?%>
             <%=image_tag book.cover_image, width: "100" %>
@@ -30,7 +32,6 @@
            <img src="https://fpoimg.com/200x250?text=Hanselman" width="100"/>
           <%end%>
         <% end %>
-
         <small>
           Added by: <%= book.user.email %>
         </small>
