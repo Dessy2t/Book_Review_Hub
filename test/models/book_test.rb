@@ -6,6 +6,8 @@ class BookTest < ActiveSupport::TestCase
     book.author = "Author"
     book.title = "Title"
     book.user = User.new
+    book_user = users(:one)
+
     
     assert book.valid?
   end

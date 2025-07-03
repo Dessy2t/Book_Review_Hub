@@ -1,6 +1,4 @@
-
-
-<header class="text-center">
+<header class="text-center pt-2">
 <h1>Books</h1>
 </header>
   <div class= "d-flex align-items-center justify-content-between ">
@@ -32,9 +30,13 @@
            <img src="https://fpoimg.com/200x250?text=Hanselman" width="100"/>
           <%end%>
         <% end %>
+        <% if book.user.present? %>
         <small>
-          Added by: <%= book.user.email %>
+          Added by: <%= link_to book.user.email, user_books_path(book.user) %>
         </small>
+        <% else %>
+          <small class="text-muted">User not available</small>
+        <% end %>
         <% if user_signed_in? && current_user == book.user%>
           <div >
             <%= link_to "Edit", edit_book_path(book), class: "btn btn-warning" %>
