@@ -3,19 +3,24 @@
 </header>
 
 <% if @books.any? %>
-    <ul class="list-group mt-3">
-        <% @books.each do |book| %>
-            <li class="list-group-item">
-                <%= link_to book.title, book_path(book) %>
-                <br>
-                <% if book.cover_image.attached? %>
-                    <%= image_tag book.cover_image, width: "100" %>
-                <% end %>
-                <p class="mb-0"><strong>Author:</strong> <%= book.author %></p>
-                <small>ISBN: <%= book.isbn %></small>
-            </li>
+  <ul class="list-group mt-3">
+    <% @books.each do |book| %>
+      <li class="list-group-item">
+        <%= link_to book.title, book_path(book) %>
+        <br>
+        <% if book.cover_image.attached? %>
+          <%= image_tag book.cover_image, width: "100" %>
         <% end %>
-    </ul>
+        <p class="mb-0"><strong>Author:</strong> <%= book.author %></p>
+        <small>
+          ISBN: <%= book.isbn %>
+        </small>
+      </li>
+    <% end %>
+  </ul>
+  <div class="mt-3">
+    <%= pagy_combo_nav_js(@pagy).html_safe %>
+  </div>
 <% else %>
   <div class="alert alert-info mt-3">This user has not added any books yet.</div>
 <% end %>
@@ -23,3 +28,4 @@
 <div class="mt-4 text-center">
   <%= link_to "Back to All Books", books_path, class: "btn btn-outline-secondary" %>
 </div>
+
