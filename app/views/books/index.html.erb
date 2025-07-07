@@ -31,9 +31,9 @@
           <%end%>
         <% end %>
         <% if book.user.present? %>
-        <small>
-          Added by: <%= link_to book.user.email, user_books_path(book.user) %>
-        </small>
+          <small>
+            Added by: <%= link_to book.user.email, user_books_path(book.user) %>
+          </small>
         <% else %>
           <small class="text-muted">User not available</small>
         <% end %>
