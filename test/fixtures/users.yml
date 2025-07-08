@@ -6,8 +6,8 @@
 #
 one:
   email: user1@email.com
-# column: value
-#
+  name: User 1
+
 two: 
   email: user2@email.com
-# column: value
+  name: User 2
